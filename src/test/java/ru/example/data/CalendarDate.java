@@ -1,4 +1,4 @@
-package data;
+package ru.example.data;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -13,5 +13,10 @@ public record CalendarDate(String year, String month, int day) {
                 today.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH),
                 today.getDayOfMonth()
         );
+    }
+
+    @Override
+    public String toString() {
+        return day + " " + month + " " + year;
     }
 }

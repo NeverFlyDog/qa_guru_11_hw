@@ -1,9 +1,18 @@
-import data.CalendarDate;
-import data.PracticeFormTestData;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import pages.PracticeFormPage;
+package ru.example;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.*;
+import ru.example.constants.TestTags;
+import ru.example.data.CalendarDate;
+import ru.example.data.PracticeFormTestData;
+import ru.example.pages.PracticeFormPage;
+
+@Epic("Формы")
+@Feature("Practice Form")
+@DisplayName("Practice Form (позитивные тесты)")
 public class PracticeFormPagePositiveTests extends BaseTest {
     private final PracticeFormPage page = new PracticeFormPage();
     private final PracticeFormPage.ResultModal resultModal = new PracticeFormPage.ResultModal();
@@ -15,6 +24,9 @@ public class PracticeFormPagePositiveTests extends BaseTest {
         data = new PracticeFormTestData();
     }
 
+    @Tag(TestTags.REGRESS)
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Заполнение всех полей формы и проверка результата")
     @Test
     void fillAllFieldsTest() {
         page.open()
@@ -46,8 +58,16 @@ public class PracticeFormPagePositiveTests extends BaseTest {
                 .shouldHaveAddress(data.getCurrentAddress())
                 .shouldHaveStateAndCity(data.getState(), data.getCity())
                 .clickClose();
+
+        resultModal.shouldNotBeVisible();
     }
 
+    @Tags({
+            @Tag(TestTags.REGRESS),
+            @Tag(TestTags.SMOKE)
+    })
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение обязательных полей формы и проверка результата")
     @Test
     void fillRequiredFieldsTest() {
         page.open()
@@ -72,5 +92,7 @@ public class PracticeFormPagePositiveTests extends BaseTest {
                 .shouldHaveAddress("")
                 .shouldHaveStateAndCity("", "")
                 .clickClose();
+
+        resultModal.shouldNotBeVisible();
     }
 }

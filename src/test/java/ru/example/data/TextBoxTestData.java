@@ -1,4 +1,4 @@
-package data;
+package ru.example.data;
 
 import net.datafaker.Faker;
 

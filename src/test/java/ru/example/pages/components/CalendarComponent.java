@@ -1,7 +1,7 @@
-package pages.components;
+package ru.example.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
-import data.CalendarDate;
+import ru.example.data.CalendarDate;
 
 import static com.codeborne.selenide.Selenide.$;
 
