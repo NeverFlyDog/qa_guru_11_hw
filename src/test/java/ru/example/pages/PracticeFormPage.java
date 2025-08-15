@@ -81,7 +81,7 @@ public class PracticeFormPage {
         return this;
     }
 
-    @Step("Выбираем дату в поле 'Date of Birth: {date}'")
+    @Step("Выбираем дату в поле 'Date of Birth:' {date}")
     public PracticeFormPage selectDateOfBirth(CalendarDate date) {
         CalendarComponent calendar = new CalendarComponent(dateOfBirthInput);
         calendar.click();
