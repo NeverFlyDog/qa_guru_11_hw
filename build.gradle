@@ -50,10 +50,6 @@ tasks.withType(Test).configureEach {
     }
 }
 
-tasks.register('test_all', Test) {
-    useJUnitPlatform()
-}
-
 tasks.register('test_regress', Test) {
     useJUnitPlatform {
         includeTags("regress")
